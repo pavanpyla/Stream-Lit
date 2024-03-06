@@ -47,7 +47,7 @@ def Declaration():
     # st.write("")
     st.write("Guided By: Sri Satya Sai Baba Mudigonda and DR Pallav Baruah")
 def display_home_page1():
-    st.markdown('<h2 id="data">Insurance Data Collector</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 id="data">Insurance Claim Predictor </h2>', unsafe_allow_html=True)
     st.write("Please enter the following details:")
     
     # Input fields for insurance data
