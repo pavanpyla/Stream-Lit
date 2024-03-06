@@ -118,7 +118,7 @@ def display_home_page1():
 
 
 def display_power_bi_report():
-    st.markdown('<h2 id="power_bi_report">Power BI Report</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 id="power_bi_report">Power BI Dashboard</h2>', unsafe_allow_html=True)
     # Power BI report URL
     power_bi_report_url = "https://app.powerbi.com/reportEmbed?reportId=8cfe6010-5acc-4355-aea8-b6cbb050a840&autoAuth=true&ctid=ac3e678e-12eb-4e3a-b90d-7d99f7151e12"
 
