@@ -1,11 +1,18 @@
 import streamlit as st
 import joblib
 import numpy as np
+from template import create_navigation_link, create_card
+from tapax import tapaxmodel
+import time
+from statistics import mode
 st.set_page_config(layout='wide')
 # Custom CSS to position the sidebar at the top
 model = joblib.load("model.pkl")
 st.markdown("""
     <style>
+        .sidebar {
+            background-color: blue; /* Set the background color of the sidebar */
+        }
         .streamlit-iframe {
             margin-top: 80px; /* Adjust the margin to make space for the navigation */
         }
@@ -17,7 +24,7 @@ st.markdown("""
         }
         .navigation-link {
             margin-right: 20px;
-            color: black;
+            color: red;
             text-decoration: none;
         }
         .navigation-link:hover {
@@ -25,14 +32,11 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
-
 def main():
-
-
+    st.sidebar.title("Navigation")
     # Main content
-    page_options = ["Data", "Power BI Report","Declaration"]
-    page_selection = st.radio("Go to", page_options)
+    page_options = ["Home","Data", "Power BI Report","tapax"]#"Declaration"]
+    page_selection = st.sidebar.radio("Go to", page_options)
 
     if page_selection == "Data":
         display_home_page1()
@@ -40,6 +44,41 @@ def main():
         display_power_bi_report()
     elif page_selection == "Declaration":
         Declaration()
+    elif page_selection == "Home":
+        Home()
+    elif page_selection == "tapax":
+        T()
+
+def Home():
+    
+    
+    # # Navigation links
+    # st.markdown(create_navigation_link("Section 1", "section1"), unsafe_allow_html=True)
+    # st.markdown(create_navigation_link("Section 2", "section2"), unsafe_allow_html=True)
+    # st.markdown(create_navigation_link("Section 3", "section3"), unsafe_allow_html=True)
+
+        # Create a layout with 4 columns
+    col1, col2, col3 = st.columns(3)
+
+    # Section 1
+    with col1:
+        st.write("<h1 id='section1'>Section 1</h1>", unsafe_allow_html=True)
+        st.markdown(create_card("Model", " Model for Prediction average Claim", "#FF5733"), unsafe_allow_html=True) # Red
+        # st.markdown(create_card("Card 2", "Content for Card 2 in Section 1", "#FFC300"), unsafe_allow_html=True) # Yellow
+
+    # Section 2
+    with col2:
+        st.write("<h1 id='section2'>Section 2</h1>", unsafe_allow_html=True)
+        # st.markdown(create_navigation_link("Go to Model", "display_home_page1"), unsafe_allow_html=True)
+        st.markdown(create_card("Dashboard", "Detailed Report of Life insurance Companies in india ", "#32CD32"), unsafe_allow_html=True) # Green
+        # st.markdown(create_card("Card 4", "Content for Card 4 in Section 2", "#3498DB"), unsafe_allow_html=True) # Blue
+
+    # Section 3
+    with col3:
+        st.write("<h1 id='section3'>Section 3</h1>", unsafe_allow_html=True)
+        st.markdown(create_card("Tapax", "Chat with our bot for any queries", "#FF5733"), unsafe_allow_html=True) # Red
+        # st.markdown(create_card("Card 6", "Content for Card 6 in Section 3", "#FFC300"), unsafe_allow_html=True) # Yellow
+
 
 def Declaration():
     st.markdown('<h2 id="data">Declaration</h2>', unsafe_allow_html=True)
@@ -47,7 +86,7 @@ def Declaration():
     # st.write("")
     st.write("Guided By: Sri Satya Sai Baba Mudigonda and DR Pallav Baruah")
 def display_home_page1():
-    st.markdown('<h2 id="data">Insurance Claim Predictor </h2>', unsafe_allow_html=True)
+    st.markdown('<h2 id="data">Insurance Data Collector</h2>', unsafe_allow_html=True)
     st.write("Please enter the following details:")
     
     # Input fields for insurance data
@@ -118,12 +157,52 @@ def display_home_page1():
 
 
 def display_power_bi_report():
-    st.markdown('<h2 id="power_bi_report">Power BI Dashboard</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 id="power_bi_report">Power BI Report</h2>', unsafe_allow_html=True)
     # Power BI report URL
     power_bi_report_url = "https://app.powerbi.com/reportEmbed?reportId=8cfe6010-5acc-4355-aea8-b6cbb050a840&autoAuth=true&ctid=ac3e678e-12eb-4e3a-b90d-7d99f7151e12"
 
     # Display Power BI report using iframe
     st.components.v1.iframe(power_bi_report_url, width=1450, height=750)
 
-if __name__ == "__main__":
+
+def T():
+    # Create an empty list to store input questions
+    st.markdown('<h2 id="data">Chat with our AI Bot</h2>', unsafe_allow_html=True)
+    # st.write('this is tapax page ')
+    # Add input box for question
+    questions_list = []
+    question_input = st.text_input("Enter your question:")
+
+    # Add button to submit question
+    if st.button("Submit"):
+        # Add the submitted question to the list
+        questions_list.append(question_input)
+        # Display the output
+        output = tapaxmodel(question_input)
+        print(' the output received is ',output)
+
+        st.write('Answer to the Question:', output)
+
+    # # Display the list of suggested questions
+    # if questions_list:
+    #     st.write("Suggested Questions:")
+    #     for question in questions_list:
+    #         st.write(question)
+         # Apply styling to the answer
+       # Apply styling to the answer
+        st.markdown(
+            f'<div style="background-color: #D4EDDA; padding: 10px; border-radius: 5px; border: 1px solid #C3E6CB; margin-top: 10px; font-family: "Courier New", Courier, monospace;">'
+            f'<span style="color: #155724; font-size: 16px; text-transform: capitalize;">'  # Applying camel case
+            f'{mode(output)}'
+            f'</span>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
+    
+
+if __name__ == "__main__":  
     main()
+
+
+# def Tapax():
+
