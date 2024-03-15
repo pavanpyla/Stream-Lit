@@ -11,7 +11,7 @@ def tapaxmodel(question_list):
     tokenizer = TapexTokenizer.from_pretrained("microsoft/tapex-large-finetuned-wtq")
     model = BartForConditionalGeneration.from_pretrained("microsoft/tapex-large-finetuned-wtq")
     df = df.sample(frac=1).reset_index(drop=True)
-    df = df.sort_values(by='Quarter', ascending=True)
+    # df = df.sort_values(by='Quarter', ascending=True)
 
     df = df.astype(str)
     # Adjust the maximum sequence length
