@@ -157,12 +157,37 @@ def display_home_page1():
 
 
 def display_power_bi_report():
-    st.markdown('<h2 id="power_bi_report">Power BI Report</h2>', unsafe_allow_html=True)
-    # Power BI report URL
-    power_bi_report_url = "https://app.powerbi.com/reportEmbed?reportId=8cfe6010-5acc-4355-aea8-b6cbb050a840&autoAuth=true&ctid=ac3e678e-12eb-4e3a-b90d-7d99f7151e12"
 
-    # Display Power BI report using iframe
-    st.components.v1.iframe(power_bi_report_url, width=1450, height=750)
+    st.markdown('<h2 id="power_bi_report">Power BI Report</h2>', unsafe_allow_html=True)
+    st.markdown('<div style="margin-top: 60px;"></div>', unsafe_allow_html=True)
+
+
+    
+
+    # Define the width of the Power BI report
+    report_width = 1450 
+
+    # Power BI report URL
+    embed_code = f"""<iframe title="Power BI Report" width="{report_width}" height="850" src="https://app.powerbi.com/view?r=eyJrIjoiYjJkY2E0MjEtNjQ3Mi00ZWQ3LTk2OGEtNjkwYjJlZTJiNGY0IiwidCI6ImFjM2U2NzhlLTEyZWItNGUzYS1iOTBkLTdkOTlmNzE1MWUxMiJ9" frameborder="0" allowFullScreen="true"></iframe>"""
+
+    # Display Power BI report
+    st.markdown(embed_code, unsafe_allow_html=True)
+
+    # sidebar_closed = not st.sidebar.expander("Navigation Sidebar", expanded=True)
+    # Add a dynamic container for the remaining space if the sidebar is closed
+    # if sidebar_closed:
+    #     col1, col2 = st.columns([1, 2])
+    #     print('Opened the dyna')
+    #     # Text content to display beside the Power BI report    
+    #     with col2:
+    #         st.write("This is the dynamic container that fills the remaining space beside the Power BI report.")
+
+
+    # embed_code = """<iframe title="end final 2" width="1450" height="850" src="https://app.powerbi.com/view?r=eyJrIjoiYjJkY2E0MjEtNjQ3Mi00ZWQ3LTk2OGEtNjkwYjJlZTJiNGY0IiwidCI6ImFjM2U2NzhlLTEyZWItNGUzYS1iOTBkLTdkOTlmNzE1MWUxMiJ9" frameborder="0" allowFullScreen="true"></iframe>"""
+
+    # st.markdown(embed_code, unsafe_allow_html=True)
+    
+    
 
 
 def T():
