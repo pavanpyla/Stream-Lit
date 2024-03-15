@@ -1,6 +1,5 @@
 scikit-learn==1.3.2
 pandas == 1.5.3
-
 streamlit==1.27.2
 streamlit_option_menu == 0.3.6
 category_encoders==2.6.2
@@ -16,5 +15,5 @@ numpy==1.21.2
 regex==2021.8.28
 tokenizers==0.10.3
 tqdm==4.62.2
-transformers==4.9.0
+transformers==4.38.2
 
