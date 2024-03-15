@@ -1,13 +1,16 @@
 import pandas as pd
 import torch
+
+from transformers import pipeline
 # import pytorch
 def tapaxmodel(question_list):
     df = pd.read_excel('company21with date.xlsx')
     df.rename(columns={"index": "Quarter"}, inplace=True)
 
-
+    
 
     from transformers import TapexTokenizer, BartForConditionalGeneration, pipeline
+    # model = pipeline("microsoft/tapex-large-finetuned-wtq")
     tokenizer = TapexTokenizer.from_pretrained("microsoft/tapex-large-finetuned-wtq")
     model = BartForConditionalGeneration.from_pretrained("microsoft/tapex-large-finetuned-wtq")
     df = df.sample(frac=1).reset_index(drop=True)
