@@ -5,6 +5,9 @@ from template import create_navigation_link, create_card
 from tapax import tapaxmodel
 import time
 from statistics import mode
+
+from transformers import pipeline
+
 st.set_page_config(layout='wide')
 # Custom CSS to position the sidebar at the top
 model = joblib.load("model.pkl")
