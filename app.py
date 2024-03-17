@@ -5,14 +5,15 @@ from template import create_navigation_link, create_card
 from tapax import tapaxmodel
 import time
 from statistics import mode
-
-from transformers import pipeline
-
 st.set_page_config(layout='wide')
 # Custom CSS to position the sidebar at the top
-model = joblib.load("model.pkl")
+model = joblib.load("rfmodel.pkl")
 st.markdown("""
     <style>
+        body {
+            background-color: white; /* Set the background color of the body */
+            color: black; /* Set the text color to black */
+        }
         .sidebar {
             background-color: blue; /* Set the background color of the sidebar */
         }
@@ -35,6 +36,7 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
 def main():
     st.sidebar.title("Navigation")
     # Main content
@@ -42,7 +44,7 @@ def main():
     page_selection = st.sidebar.radio("Go to", page_options)
 
     if page_selection == "Data":
-        display_home_page1()
+        Model()
     elif page_selection == "Power BI Report":
         display_power_bi_report()
     elif page_selection == "Declaration":
@@ -88,75 +90,105 @@ def Declaration():
     st.write("Done By : Pavan Pyla ,IInd MSc in Data Science and Computing")
     # st.write("")
     st.write("Guided By: Sri Satya Sai Baba Mudigonda and DR Pallav Baruah")
-def display_home_page1():
+def Model():
     st.markdown('<h2 id="data">Insurance Data Collector</h2>', unsafe_allow_html=True)
     st.write("Please enter the following details:")
     
-    # Input fields for insurance data
+    # Create two columns for input fields
     col1, col2 = st.columns(2)
-    with col1:
-        age = st.number_input("Age", min_value=0, max_value=150, step=1)
-        gender = st.selectbox("Gender", [ "female","male"])
-        bmi = st.number_input("BMI", min_value=0.0, max_value=1000.0, step=0.1)
-        blood_pressure = st.number_input("Blood Pressure", min_value=0, max_value=300, step=1)
-    with col2:
-        diabetic = st.radio("Diabetic", ["Yes", "No"])
-        children = st.number_input("Number of Children", min_value=0, max_value=100, step=1)
-        smoker = st.radio("Smoker", ["Yes", "No"])
-        region = st.selectbox("Region", ["Northeast", "Northwest", "Southeast", "Southwest"])
 
-     # Button to submit data
+    # Input fields for insurance data
+    with col1:
+        premium_earned = st.number_input("Premium Earned",  step=100000)
+        reinsurance_ceded = st.number_input("Reinsurance ceded",  step=10000)
+        commission = st.number_input("Commission",  step=50000)
+        operating_expenses = st.number_input("Operating Expenses related to Insurance Business",  step=500000)
+
+    with col2:
+        benefits_paid = st.number_input("Benefits paid (Net)",  step=5000000)
+        surplus_deficit = st.number_input("Surplus/ (Deficit)", step=100000)
+        profit_loss = st.number_input("Profit/(Loss) before tax",  step=1000000)
+        quarter = st.number_input("Quarter", min_value=1, max_value=4, step=1)
+        next_quarter = (quarter + 1) % 5  # Ensuring next_quarter is always 1 greater than quarter, looping back to 1 if quarter is 4
+        # Button to submit data
     if st.button("Pridict Claim"):
         # Store submitted data in a list
-        submitted_data = [age, gender, bmi, blood_pressure, diabetic, children, smoker, region]
-        encoded_input = np.zeros(14)  # Total number of unique categories across all categorical variables
-
-        # Encode age, bmi, and blood pressure directly
-        encoded_input[0] = age
-        encoded_input[1] = bmi
-        encoded_input[2] = blood_pressure
-        encoded_input[3] = children
-        # Encode categorical variables using one-hot encoding
-        categorical_variables = {
-            "gender": {"female": 4, "male": 5},
-            "diabetic": {"Yes": 6, "No": 7},
-            "smoker": {"No": 8, "Yes": 9},
-            "region": {"Northeast": 10, "Northwest": 11, "Southeast": 12, "Southwest": 13}
+        submitted_data = [[premium_earned, reinsurance_ceded, commission, operating_expenses, 
+                      benefits_paid, surplus_deficit, profit_loss, quarter, next_quarter]]
+        
+        X_stats = {
+        'Premium Earned': {'mean': 41747534.85329082, 'std': 146094084.0133876},
+        'Reinsurance ceded': {'mean': -107024.53470663266, 'std': 236078.30073900594},
+        'Commission': {'mean': 2475864.940012771, 'std': 9049466.74025776},
+        'Operating Expenses related to Insurance Business': {'mean': 4387051.89434949, 'std': 12857930.353998087},
+            'Benefits paid (Net)': {'mean': 24469815.146679435, 'std': 90823273.08282025},
+        'Surplus/ (Deficit)': {'mean': 868610.6302567394, 'std': 2689396.281981464},
+        'Profit/(Loss) before tax': {'mean': 583632.4974712643, 'std': 2259434.401638071},
+        'Quarter': {'mean': 0, 'std': 1},
+        'next_quarter': {'mean': 0, 'std': 1}
+        }
+        y_stats = {
+        'next_quarter_premium': {'mean': 43094793.73943517, 'std': 149623255.69637465}
         }
 
-        # Update the corresponding indices in the encoded input vector
-        if gender in categorical_variables["gender"]:
-            encoded_input[categorical_variables["gender"][gender]] = 1
-        if diabetic in categorical_variables["diabetic"]:
-            encoded_input[categorical_variables["diabetic"][diabetic]] = 1
-        if smoker in categorical_variables["smoker"]:
-            encoded_input[categorical_variables["smoker"][smoker]] = 1
-        if region in categorical_variables["region"]:   
-            encoded_input[categorical_variables["region"][region]] = 1
+
+        scaled_p = []
+        for i, column in enumerate(X_stats.keys()):
+            mean = X_stats[column]['mean']
+            std = X_stats[column]['std']
+            scaled_value = (submitted_data[0][i] - mean) / std
+            scaled_p.append(scaled_value)
+        scaled_p = np.array(scaled_p).reshape(1, -1)
+        print(scaled_p)
 
 
-        print('encoded ',encoded_input)
 
-
+        submitted_data = {
+        'Premium Earned': premium_earned,
+        'Reinsurance ceded': reinsurance_ceded,
+        'Commission': commission,
+        'Operating Expenses related to Insurance Business': operating_expenses,
+        'Benefits paid (Net)': benefits_paid,
+        'Surplus/ (Deficit)': surplus_deficit,
+        'Profit/(Loss) before tax': profit_loss,
+        'Quarter': quarter,
+        'next_quarter': next_quarter
+            }
+    
+        # Display submitted data in two columns
+        st.write("Submitted Data:")
+        columns = st.columns(2)
+        with columns[0]:
+            st.write("Premium Earned:", premium_earned)
+            st.write("Reinsurance ceded:", reinsurance_ceded)
+            st.write("Commission:", commission)
+            st.write("Operating Expenses related to Insurance Business:", operating_expenses)
+        with columns[1]:
+            st.write("Benefits paid (Net):", benefits_paid)
+            st.write("Surplus/ (Deficit):",surplus_deficit )
+            st.write("Profit/(Loss) before tax:",profit_loss )
+            st.write("Quarter:", quarter)
         ##################################################################
-        encoded_input1 = np.array(encoded_input)
+        
+
+
         print('the models output :   ')
-        claim = model.predict([encoded_input1])[0]
-        print(claim)
+        # claim = model.predict(scaled_p)
+        claimEarned = (model.predict(scaled_p) * y_stats['next_quarter_premium']['std']) + y_stats['next_quarter_premium']['mean']
+
+        # print("Inverse scaled values:")
+        # print(inverse_scaled_values)
+        print(claimEarned[0] )
         
         ##################################################################
-        # Display submitted data
-        st.write("Submitted Data:")
-        st.write("Age:", age)
-        st.write("Gender:", gender)
-        st.write("BMI:", bmi)
-        st.write("Blood Pressure:", blood_pressure)
-        st.write("Diabetic:", diabetic)
-        st.write("Number of Children:", children)
-        st.write("Smoker:", smoker)
-        st.write("Region:", region)
+        # Display submitted data with new feature names
+        # st.write("Submitted Data:")
+        # for feature_name, value in zip(feature_names, submitted_data):
+        #     st.write(f"{feature_name}:", value)
 
-        st.write('the expected claim will be', claim)
+        # Display expected claim in the sidebar with dark green background
+        st.markdown(f"<div style='background-color: #072402; padding: 10px; color: #7fa383;'>Expected Next Quarter Premium:</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='background-color: #072402; padding: 10px; color: #25ff00;'>{round(claimEarned[0],2) }</div>", unsafe_allow_html=True)
 
 
 def display_power_bi_report():
@@ -221,7 +253,7 @@ def T():
         st.markdown(
             f'<div style="background-color: #D4EDDA; padding: 10px; border-radius: 5px; border: 1px solid #C3E6CB; margin-top: 10px; font-family: "Courier New", Courier, monospace;">'
             f'<span style="color: #155724; font-size: 16px; text-transform: capitalize;">'  # Applying camel case
-            f'{mode(output)}'
+            f'{mode(output).upper()}'
             f'</span>'
             f'</div>',
             unsafe_allow_html=True
