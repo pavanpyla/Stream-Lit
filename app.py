@@ -91,8 +91,8 @@ def Declaration():
     # st.write("")
     st.write("Guided By: Sri Satya Sai Baba Mudigonda and DR Pallav Baruah")
 def Model():
-    st.markdown('<h2 id="data">Insurance Data Collector</h2>', unsafe_allow_html=True)
-    st.write("Please enter the following details:")
+    st.markdown('<h2 id="data">Next Quarter Premium Predictor</h2>', unsafe_allow_html=True)
+    st.write("Please enter the previous quarter detailes:")
     
     # Create two columns for input fields
     col1, col2 = st.columns(2)
