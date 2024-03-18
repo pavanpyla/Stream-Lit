@@ -61,27 +61,53 @@ def Home():
     # st.markdown(create_navigation_link("Section 1", "section1"), unsafe_allow_html=True)
     # st.markdown(create_navigation_link("Section 2", "section2"), unsafe_allow_html=True)
     # st.markdown(create_navigation_link("Section 3", "section3"), unsafe_allow_html=True)
-
+    st.markdown("<h1>Insurance Analytics Platform - IAP </h1>", unsafe_allow_html=True)
         # Create a layout with 4 columns
     col1, col2, col3 = st.columns(3)
 
     # Section 1
     with col1:
-        st.write("<h1 id='section1'>Section 1</h1>", unsafe_allow_html=True)
-        st.markdown(create_card("Model", " Model for Prediction average Claim", "#FF5733"), unsafe_allow_html=True) # Red
+        
+        st.markdown(create_card("Life Insurance Dashboard",
+                                 """ Our Life Insurance Dashboard offers comprehensive insights into the performance and stability of various insurance companies operating in India, using authorized data sourced from the Insurance Regulatory and Development Authority of India (IRDAI). This interactive dashboard provides users with valuable information on different trends, individual company performance, and overall industry stability.
+
+                                    Key Features:
+
+    Trend Analysis
+    Company Performance
+    Financial Stability
+    KPI Analysis
+    Customizable
+With our Life Insurance Dashboard, stakeholders can make informed decisions, identify emerging trends, and navigate the complex landscape of the Indian insurance industry with confidence. Explore the dashboard today to unlock valuable insights and drive strategic initiatives in the life insurance sector.""","#FF5733"), unsafe_allow_html=True) # Red
         # st.markdown(create_card("Card 2", "Content for Card 2 in Section 1", "#FFC300"), unsafe_allow_html=True) # Yellow
 
     # Section 2
     with col2:
-        st.write("<h1 id='section2'>Section 2</h1>", unsafe_allow_html=True)
+        # st.write("<h1 id='section2'>Section 2</h1>", unsafe_allow_html=True)
         # st.markdown(create_navigation_link("Go to Model", "display_home_page1"), unsafe_allow_html=True)
-        st.markdown(create_card("Dashboard", "Detailed Report of Life insurance Companies in india ", "#32CD32"), unsafe_allow_html=True) # Green
+        st.markdown(create_card("Premium Predictor", """The predictive model utilizes Random Forest regression, a robust machine learning algorithm known for its ability to handle complex datasets and provide accurate predictions. By analyzing various performance metrics of life insurance companies from past quarters, such as premium earned, reinsurance ceded, commission, operating expenses, benefits paid (net), surplus/deficit, and profit/loss before tax, the model generates predictions for the next quarter's premium.
+
+            Performance Metrics:
+            
+
+        Mean Absolute Error (MAE): 0.03790
+        R-squared (R2): 0.97817
+        Root Mean Squared Error (RMSE): 0.14381
+        Mean Absolute Percentage Error (MAPE): 11.632
+        Adjusted R-squared: 0.97683
+                                
+        
+    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning. By leveraging historical performance data, insurers can make informed decisions, optimize resource allocation, and enhance overall operational efficiency.                          """, "#32CD32"), unsafe_allow_html=True) # Green
         # st.markdown(create_card("Card 4", "Content for Card 4 in Section 2", "#3498DB"), unsafe_allow_html=True) # Blue
 
     # Section 3
     with col3:
-        st.write("<h1 id='section3'>Section 3</h1>", unsafe_allow_html=True)
-        st.markdown(create_card("Tapax", "Chat with our bot for any queries", "#FF5733"), unsafe_allow_html=True) # Red
+        # st.write("<h1 id='section3'>Section 3</h1>", unsafe_allow_html=True)
+        st.markdown(create_card("Tapax - Chat Bot", """ Our model, TAPEX (Table Pre-training with Neural SQL Execution), is a cutting-edge Natural Language Processing (NLP) model trained on the comprehensive dataset provided by the Insurance Regulatory and Development Authority of India (IRDAI). This dataset encompasses a wealth of information from various insurance companies operating within the life insurance sector.
+
+TAPEX represents a significant advancement in NLP technology, leveraging a novel approach known as table pre-training. This involves training the model to understand and execute SQL queries over a synthetic corpus, which is automatically synthesized to include executable SQL queries. By doing so, TAPEX gains a deep understanding of structured data and is equipped to respond to a wide range of queries related to the life insurance industry.
+
+With TAPEX, users can gain valuable insights and clarity on a multitude of topics pertaining to life insurance companies. Whether it's understanding financial performance metrics, exploring market trends, or delving into regulatory compliance issues, TAPEX stands ready to provide accurate and informative answers to user queries.""", "#5f5ced"), unsafe_allow_html=True) # Red
         # st.markdown(create_card("Card 6", "Content for Card 6 in Section 3", "#FFC300"), unsafe_allow_html=True) # Yellow
 
 
@@ -91,8 +117,8 @@ def Declaration():
     # st.write("")
     st.write("Guided By: Sri Satya Sai Baba Mudigonda and DR Pallav Baruah")
 def Model():
-    st.markdown('<h2 id="data">Next Quarter Premium Predictor</h2>', unsafe_allow_html=True)
-    st.write("Please enter the previous quarter detailes:")
+    st.markdown('<h2 id="data">Insurance Data Collector</h2>', unsafe_allow_html=True)
+    st.write("Please enter the following details:")
     
     # Create two columns for input fields
     col1, col2 = st.columns(2)
@@ -187,8 +213,8 @@ def Model():
         #     st.write(f"{feature_name}:", value)
 
         # Display expected claim in the sidebar with dark green background
-        st.markdown(f"<div style='background-color: #072402; padding: 10px; color: #7fa383;'>Expected Next Quarter Premium:</div>", unsafe_allow_html=True)
-        st.markdown(f"<div style='background-color: #072402; padding: 10px; color: #25ff00;'>{round(claimEarned[0],2) }</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='background-color: #d1d1d1; padding: 10px; color: #000000;'>Expected Next Quarter Premium:</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='background-color: #d1d1d1; padding: 10px; color: #155706;'>{round(claimEarned[0],2) }</div>", unsafe_allow_html=True)
 
 
 def display_power_bi_report():
