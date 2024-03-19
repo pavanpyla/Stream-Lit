@@ -88,8 +88,7 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
         st.markdown(create_card("Premium Predictor", """The predictive model utilizes Random Forest regression, a robust machine learning algorithm known for its ability to handle complex datasets and provide accurate predictions. By analyzing various performance metrics of life insurance companies from past quarters, such as premium earned, reinsurance ceded, commission, operating expenses, benefits paid (net), surplus/deficit, and profit/loss before tax, the model generates predictions for the next quarter's premium.
 
             Performance Metrics:
-            
-
+                                    
         Mean Absolute Error (MAE): 0.03790
         R-squared (R2): 0.97817
         Root Mean Squared Error (RMSE): 0.14381
@@ -97,7 +96,7 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
         Adjusted R-squared: 0.97683
                                 
         
-    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning. By leveraging historical performance data, insurers can make informed decisions, optimize resource allocation, and enhance overall operational efficiency.                          """, "#32CD32"), unsafe_allow_html=True) # Green
+    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning.                       """, "#32CD32"), unsafe_allow_html=True) # Green
         # st.markdown(create_card("Card 4", "Content for Card 4 in Section 2", "#3498DB"), unsafe_allow_html=True) # Blue
 
     # Section 3
