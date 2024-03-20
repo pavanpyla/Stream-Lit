@@ -96,7 +96,8 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
         Adjusted R-squared: 0.97683
                                 
         
-    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning.                 
+    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning.this model provides invaluable insights for stakeholders to make informed decisions and optimize their strategies for the future.
+    
     """, "#32CD32"), unsafe_allow_html=True) # Green
         # st.markdown(create_card("Card 4", "Content for Card 4 in Section 2", "#3498DB"), unsafe_allow_html=True) # Blue
 
