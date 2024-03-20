@@ -40,7 +40,7 @@ st.markdown("""
 def main():
     st.sidebar.title("Navigation")
     # Main content
-    page_options = ["Home", "Life Insurance Dashboard","Premium Predictor","tapax"]#"Declaration"]
+    page_options = ["Home", "Life Insurance Dashboard","Premium Predictor","tapex"]#"Declaration"]
     page_selection = st.sidebar.radio("Go to", page_options)
 
     if page_selection == "Life Insurance Dashboard":
@@ -51,7 +51,7 @@ def main():
         Declaration()
     elif page_selection == "Home":
         Home()
-    elif page_selection == "tapax":
+    elif page_selection == "tapex":
         T()
 
 def Home():
