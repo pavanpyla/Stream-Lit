@@ -107,7 +107,7 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
 
 TAPEX represents a significant advancement in NLP technology, leveraging a novel approach known as table pre-training. This involves training the model to understand and execute SQL queries over a synthetic corpus, which is automatically synthesized to include executable SQL queries. By doing so, TAPEX gains a deep understanding of structured data and is equipped to respond to a wide range of queries related to the life insurance industry.
 
-With TAPEX, users can gain valuable insights and clarity on a multitude of topics pertaining to life insurance companies. Whether it's understanding financial performance metrics, exploring market trends, or delving into regulatory compliance issues, TAPEX stands ready to provide accurate and informative answers to user queries.""", "#5f5ced"), unsafe_allow_html=True) # Red
+With TAPEX, users can gain valuable insights and clarity on a multitude of topics pertaining to life insurance companies. Whether it's understanding financial performance metrics or delving into regulatory compliance issues, TAPEX stands ready to provide accurate and informative answers to user queries.""", "#5f5ced"), unsafe_allow_html=True) # Red
         # st.markdown(create_card("Card 6", "Content for Card 6 in Section 3", "#FFC300"), unsafe_allow_html=True) # Yellow
 
 
