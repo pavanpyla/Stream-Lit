@@ -40,12 +40,12 @@ st.markdown("""
 def main():
     st.sidebar.title("Navigation")
     # Main content
-    page_options = ["Home","Data", "Power BI Report","tapax"]#"Declaration"]
+    page_options = ["Home","Premium Predictor", "Life Insurance Dashboard","tapax"]#"Declaration"]
     page_selection = st.sidebar.radio("Go to", page_options)
 
     if page_selection == "Life Insurance Dashboard":
         display_power_bi_report()
-    elif page_selection == "Data":
+    elif page_selection == "Premium Predictor":
         Model()
     elif page_selection == "Declaration":
         Declaration()
