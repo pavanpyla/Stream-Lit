@@ -43,10 +43,10 @@ def main():
     page_options = ["Home","Data", "Power BI Report","tapax"]#"Declaration"]
     page_selection = st.sidebar.radio("Go to", page_options)
 
-    if page_selection == "Data":
-        Model()
-    elif page_selection == "Power BI Report":
+    if page_selection == "Life Insurance Dashboard":
         display_power_bi_report()
+    elif page_selection == "Data":
+        Model()
     elif page_selection == "Declaration":
         Declaration()
     elif page_selection == "Home":
