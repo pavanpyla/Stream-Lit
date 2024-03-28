@@ -102,7 +102,7 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
     # Section 3
     with col3:
         # st.write("<h1 id='section3'>Section 3</h1>", unsafe_allow_html=True)
-        st.markdown(create_card("Tapax - Chat Bot", """ Our model, TAPEX (Table Pre-training with Neural SQL Execution), is a cutting-edge Natural Language Processing (NLP) model trained on the comprehensive dataset provided by the Insurance Regulatory and Development Authority of India (IRDAI). This dataset encompasses a wealth of information from various insurance companies operating within the life insurance sector.
+        st.markdown(create_card("Tapex - Chat Bot", """ Our model, TAPEX (Table Pre-training with Neural SQL Execution), is a cutting-edge Natural Language Processing (NLP) model trained on the comprehensive dataset provided by the Insurance Regulatory and Development Authority of India (IRDAI). This dataset encompasses a wealth of information from various insurance companies operating within the life insurance sector.
 
 TAPEX represents a significant advancement in NLP technology, leveraging a novel approach known as table pre-training. This involves training the model to understand and execute SQL queries over a synthetic corpus, which is automatically synthesized to include executable SQL queries. By doing so, TAPEX gains a deep understanding of structured data and is equipped to respond to a wide range of queries related to the life insurance industry.
 
