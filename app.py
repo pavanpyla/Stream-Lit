@@ -43,15 +43,15 @@ def main():
     page_options = ["Home", "Life Insurance Dashboard","Premium Predictor","tapex"]#"Declaration"]
     page_selection = st.sidebar.radio("Go to", page_options)
 
-    if page_selection == "Life Insurance Dashboard":
-        display_power_bi_report()
-    elif page_selection == "Premium Predictor":
+    if page_selection == "Premium Predictor":
         Model()
+    elif page_selection == "Life Insurance Dashboard":
+        display_power_bi_report()
     elif page_selection == "Declaration":
         Declaration()
     elif page_selection == "Home":
         Home()
-    elif page_selection == "tapex":
+    elif page_selection == "tapax":
         T()
 
 def Home():
@@ -78,7 +78,7 @@ def Home():
     Financial Stability
     KPI Analysis
     Customizable
-With our Life Insurance Dashboard, stakeholders can make informed decisions, identify emerging trends, and navigate the complex landscape of the Indian insurance industry with confidence. Explore the dashboard today to unlock valuable insights and drive strategic initiatives in the life insurance sector.""","#FF5733"), unsafe_allow_html=True) # Red
+With our Life Insurance Dashboard, stakeholders can make informed decisions, identify emerging trends, and navigate the complex landscape of the Indian insurance industry with confidence. Explore the dashboard today to unlock valuable insights and drive strategic initiatives in the life insurance sector.""","#f59595"), unsafe_allow_html=True) # Red
         # st.markdown(create_card("Card 2", "Content for Card 2 in Section 1", "#FFC300"), unsafe_allow_html=True) # Yellow
 
     # Section 2
@@ -96,19 +96,17 @@ With our Life Insurance Dashboard, stakeholders can make informed decisions, ide
         Adjusted R-squared: 0.97683
                                 
         
-    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning.this model provides invaluable insights for stakeholders to make informed decisions for future.
-    
-    """, "#32CD32"), unsafe_allow_html=True) # Green
+    The development of a machine learning model for predicting next quarter premiums in the life insurance sector represents a significant advancement in risk assessment and financial planning.                       """, "#95f5af"), unsafe_allow_html=True) # Green
         # st.markdown(create_card("Card 4", "Content for Card 4 in Section 2", "#3498DB"), unsafe_allow_html=True) # Blue
 
     # Section 3
     with col3:
         # st.write("<h1 id='section3'>Section 3</h1>", unsafe_allow_html=True)
-        st.markdown(create_card("Tapex - Chat Bot", """ Our model, TAPEX (Table Pre-training with Neural SQL Execution), is a cutting-edge Natural Language Processing (NLP) model trained on the comprehensive dataset provided by the Insurance Regulatory and Development Authority of India (IRDAI). This dataset encompasses a wealth of information from various insurance companies operating within the life insurance sector.
+        st.markdown(create_card("Tapax - Chat Bot", """ Our model, TAPEX (Table Pre-training with Neural SQL Execution), is a cutting-edge Natural Language Processing (NLP) model trained on the comprehensive dataset provided by the Insurance Regulatory and Development Authority of India (IRDAI). This dataset encompasses a wealth of information from various insurance companies operating within the life insurance sector.
 
 TAPEX represents a significant advancement in NLP technology, leveraging a novel approach known as table pre-training. This involves training the model to understand and execute SQL queries over a synthetic corpus, which is automatically synthesized to include executable SQL queries. By doing so, TAPEX gains a deep understanding of structured data and is equipped to respond to a wide range of queries related to the life insurance industry.
 
-With TAPEX, users can gain valuable insights and clarity on a multitude of topics pertaining to life insurance companies. Whether it's understanding financial performance metrics or delving into regulatory compliance issues, TAPEX stands ready to provide accurate and informative answers to user queries.""", "#5f5ced"), unsafe_allow_html=True) # Red
+With TAPEX, users can gain valuable insights and clarity on a multitude of topics pertaining to life insurance companies. Whether it's understanding financial performance metrics, exploring market trends, or delving into regulatory compliance issues, TAPEX stands ready to provide accurate and informative answers to user queries.""", "#565efc"), unsafe_allow_html=True) # Red
         # st.markdown(create_card("Card 6", "Content for Card 6 in Section 3", "#FFC300"), unsafe_allow_html=True) # Yellow
 
 
