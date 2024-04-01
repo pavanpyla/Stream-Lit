@@ -51,7 +51,7 @@ def main():
         Declaration()
     elif page_selection == "Home":
         Home()
-    elif page_selection == "tapax":
+    elif page_selection == "tapex":
         T()
 
 def Home():
